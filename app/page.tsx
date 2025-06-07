@@ -19,8 +19,8 @@ const samplePosts = [
   },
   {
     id: '2',
-    title: 'Web開発について思うこと',
-    excerpt: '最近のWeb開発トレンドについて、個人的な見解をまとめました。Next.jsやReactの話題を中心に...',
+    title: 'このブログを作った方法について',
+    excerpt: 'プログラミング初心者がNext.js + Cursor AIエディタを使ってブログを自作した体験談。初心者向けに技術選択の理由から実装まで詳しく解説。',
     date: new Date('2024-01-10'),
     slug: 'web-development-thoughts',
     category: '技術',
