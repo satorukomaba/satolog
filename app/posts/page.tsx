@@ -8,6 +8,15 @@ import AdUnit from '@/components/AdUnit'
 // サンプル記事データ
 const allPosts = [
   {
+    id: '4',
+    title: '【スト6シーズン3まとめ】大型バランス調整とYear 3キャラ解説',
+    excerpt: 'ストリートファイター6のSeason 3大型アップデートを詳しく解説。システム変更からキャラ調整、Year 3新キャラまで徹底まとめ。',
+    date: new Date('2024-12-18'),
+    slug: 'sf6-season3-summary',
+    category: 'ゲーム',
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=400&fit=crop&auto=format&q=80'
+  },
+  {
     id: '1',
     title: '初回投稿：ブログを始めました',
     excerpt: 'サトログを始めた理由と今後の展望について詳しく書きました。ブログを通じて学びをシェアし、読者の皆様との交流を楽しみにしています。',
