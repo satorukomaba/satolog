@@ -5,7 +5,7 @@ import { format } from 'date-fns'
 import { ja } from 'date-fns/locale'
 import AdUnit from '@/components/AdUnit'
 
-// サンプル記事データ
+// サンプル記事データ（日付順に並び替え）
 const allPosts = [
   {
     id: '4',
@@ -17,24 +17,6 @@ const allPosts = [
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=400&fit=crop&auto=format&q=80'
   },
   {
-    id: '1',
-    title: '初回投稿：ブログを始めました',
-    excerpt: 'サトログを始めた理由と今後の展望について詳しく書きました。ブログを通じて学びをシェアし、読者の皆様との交流を楽しみにしています。',
-    date: new Date('2024-01-15'),
-    slug: 'first-post',
-    category: '日記',
-    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop&auto=format&q=80'
-  },
-  {
-    id: '2',
-    title: 'このブログを作った方法について',
-    excerpt: 'プログラミング初心者がNext.js + Cursor AIエディタを使ってブログを自作した体験談。初心者向けに技術選択の理由から実装まで詳しく解説。',
-    date: new Date('2024-01-10'),
-    slug: 'web-development-thoughts',
-    category: '技術',
-    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop&auto=format&q=80'
-  },
-  {
     id: '3',
     title: '今期視聴アニメ "ゆるっと感想まとめ"',
     excerpt: 'ガンダム初心者でも気軽に読めるネタバレ控えめのファンコラム。ジークアクス、片田舎のおっさん、にんころの3作品を紹介します。',
@@ -42,6 +24,24 @@ const allPosts = [
     slug: 'anime-review-2024',
     category: 'アニメ',
     image: '/anime-article-image.png'
+  },
+  {
+    id: '2',
+    title: 'このブログを作った方法について',
+    excerpt: 'プログラミング初心者がNext.js + Cursor AIエディタを使ってブログを自作した体験談。初心者向けに技術選択の理由から実装まで詳しく解説。',
+    date: new Date('2025-06-02'),
+    slug: 'web-development-thoughts',
+    category: '技術',
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop&auto=format&q=80'
+  },
+  {
+    id: '1',
+    title: '初回投稿：ブログを始めました',
+    excerpt: 'サトログを始めた理由と今後の展望について詳しく書きました。ブログを通じて学びをシェアし、読者の皆様との交流を楽しみにしています。',
+    date: new Date('2025-06-01'),
+    slug: 'first-post',
+    category: '日記',
+    image: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=800&h=400&fit=crop&auto=format&q=80'
   }
 ]
 
