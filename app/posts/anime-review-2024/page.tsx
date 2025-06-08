@@ -13,13 +13,13 @@ export const metadata = {
     title: '今期視聴アニメ "ゆるっと感想まとめ"',
     description: 'ガンダム初心者でも気軽に読めるネタバレ控えめのファンコラム。',
     type: 'article',
-    publishedTime: '2024-01-05',
+    publishedTime: '2025-06-05',
     authors: ['サトログ'],
   },
 }
 
 export default function AnimeReviewPost() {
-  const postDate = new Date('2024-01-05')
+  const postDate = new Date('2025-06-05')
   
   return (
     <div className="max-w-4xl mx-auto px-8 py-16">
