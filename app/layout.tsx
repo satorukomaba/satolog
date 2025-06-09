@@ -10,6 +10,7 @@ import GoogleAnalytics from '@/components/GoogleAnalytics'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://satolog-8tzolnhjh-satorukomabas-projects.vercel.app'),
   title: {
     default: 'サトログ',
     template: '%s | サトログ'
