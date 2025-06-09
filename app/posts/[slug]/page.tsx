@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { format } from 'date-fns'
 import { ja } from 'date-fns/locale'
@@ -514,6 +515,18 @@ export default function PostPage({ params }: Props) {
             {post.title}
           </h1>
         </header>
+
+        {/* メイン画像 */}
+        {post.slug === 'hayashihara-megumi-blog-controversy' && (
+          <div className="relative w-full h-64 md:h-80 mb-16 overflow-hidden rounded-lg">
+            <Image
+              src="/hayashihara-megumi-blog.png"
+              alt={post.title}
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
 
         {/* AdSense広告 */}
         <AdUnit slot="1111111111" />
