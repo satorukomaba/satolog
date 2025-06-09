@@ -14,7 +14,7 @@ const allPosts = [
     date: new Date('2025-06-09'),
     slug: 'hayashihara-megumi-blog-controversy',
     category: 'エンタメ',
-    image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&h=400&fit=crop&auto=format&q=80'
+    image: '/hayashihara-megumi-blog.png'
   },
   {
     id: '4',
