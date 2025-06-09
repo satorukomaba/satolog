@@ -8,6 +8,15 @@ import AdUnit from '@/components/AdUnit'
 // サンプル記事データ（日付順に並び替え）
 const allPosts = [
   {
+    id: '5',
+    title: '「林原めぐみブログ炎上」徹底解説｜発端・修正・余波を時系列で追う',
+    excerpt: '声優界のレジェンド林原めぐみさんのブログ投稿が炎上した一連の騒動を詳しく解説。韓国への言及、記事修正、SNSでの反応まで時系列で徹底分析。',
+    date: new Date('2025-06-09'),
+    slug: 'hayashihara-megumi-blog-controversy',
+    category: 'エンタメ',
+    image: 'https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&h=400&fit=crop&auto=format&q=80'
+  },
+  {
     id: '4',
     title: '【スト6シーズン3まとめ】大型バランス調整とYear 3キャラ解説',
     excerpt: 'ストリートファイター6のSeason 3大型アップデートを詳しく解説。システム変更からキャラ調整、Year 3新キャラまで徹底まとめ。',
