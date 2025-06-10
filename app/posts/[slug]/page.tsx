@@ -379,6 +379,118 @@ Cursorのようなツールを使えば、初心者でも本格的なものが�
     category: 'ゲーム',
     excerpt: 'ストリートファイター6のSeason 3大型アップデートを詳しく解説。システム変更からキャラ調整、Year 3新キャラまで徹底まとめ。'
   },
+  'ios-26-ipad-compatibility-guide': {
+    id: '6',
+    title: '【2025年最新版】iOS 26 対応機種 iPad 完全ガイド',
+    content: `# 【2025年最新版】iOS 26 対応機種 iPad 完全ガイド
+
+WWDC 25 で発表された **iPadOS 26**（iOS 26）対応モデルを一覧でチェック！さらに **Apple Intelligence** が使える iPad もまとめて紹介します。
+
+## 目次
+
+1. [iPadOS 26 対応モデル一覧](#list)
+2. [Apple Intelligence が動く iPad](#ai)
+3. [iPadOS 26 の注目新機能](#features)
+4. [まとめ & 買い替えガイド](#summary)
+
+## 1. iPadOS 26 対応モデル一覧
+
+Apple 公式発表と主要メディア報道を基に、**iOS 26（iPadOS 26）にアップデート可能な iPad 全モデル**を整理しました。旧型の **iPad (第7世代／A10 チップ)** は今回でサポート終了となる点に注意してください。
+
+### 対応機種一覧表
+
+**通常 iPad シリーズ**
+- iPad (第11世代) / A16 チップ ✔ iPadOS 26対応
+- iPad (第10世代) / A14 チップ ✔ iPadOS 26対応  
+- iPad (第9世代) / A13 チップ ✔ iPadOS 26対応
+- iPad (第8世代) / A12 チップ ✔ iPadOS 26対応
+- **iPad (第7世代) / A10 チップ ✗ サポート終了**
+
+**iPad Air シリーズ**
+- iPad Air 13″ (2025) / M3 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air 11″ (2025) / M3 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air 13″ (2024) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air 11″ (2024) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air (第5世代) / M1 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air (第4世代) / A14 チップ ✔ iPadOS 26対応
+- iPad Air (第3世代) / A12 チップ ✔ iPadOS 26対応
+
+**iPad mini シリーズ**  
+- iPad mini (第7世代) / A17 Pro チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad mini (第6世代) / A15 チップ ✔ iPadOS 26対応
+- iPad mini (第5世代) / A12 チップ ✔ iPadOS 26対応
+
+**iPad Pro シリーズ**
+- iPad Pro 11″ (2024) / M4 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 11″ (第4世代) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 11″ (第3世代) / M1 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 11″ (第2世代) / A12Z チップ ✔ iPadOS 26対応
+- iPad Pro 11″ (第1世代) / A12X チップ ✔ iPadOS 26対応
+- iPad Pro 13″ (2024) / M4 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 12.9″ (第6世代) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 12.9″ (第5世代) / M1 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 12.9″ (第4世代) / A12Z チップ ✔ iPadOS 26対応
+- iPad Pro 12.9″ (第3世代) / A12X チップ ✔ iPadOS 26対応
+
+✔＝アップデート可能 / ―＝非対応
+
+## 2. Apple Intelligence が動く iPad
+
+**Apple Intelligence**（AI 生成アシスト、Contextual Siri など）は、**M1 / M2 / M3 / M4** または **A17 Pro** を搭載した iPad でのみ利用できます。現時点で日本語にも対応しているため、対象モデルなら追加設定なしで新しい AI 機能を試せます。
+
+### Apple Intelligence 対応機種
+- iPad Air (第5世代) 以降
+- iPad mini (第7世代)
+- iPad Pro 11″ (第3世代) 以降
+- iPad Pro 12.9″ (第5世代) 以降
+
+**ポイント**：A14／A15 世代でも iPadOS 26 自体は動きますが、Apple Intelligence は**非対応**です。
+
+## 3. iPadOS 26 の注目新機能
+
+### Liquid Glass UI
+iPad 全体のウィンドウが「液体ガラス」風に透過。11″ 以上のモデルでは 120 Hz でアニメーションするため、ProMotion と相性抜群。
+
+### 新マルチウィンドウ & バックグラウンド
+Slide Over と Split View が統合され、ドラッグ 1 回で 4 ウィンドウ同時表示に。バックグラウンド処理も強化されて動画書き出し中に別アプリを操作しても速度が落ちません。
+
+### ローカル収録 & 高音質録音
+外部マイク選択・ノイズ分離に対応し、**AirPods Pro**接続時も 48 kHz/24bit で録音可能。ポッドキャスター必見！
+
+### 新アプリ: Journal & Apple Games
+
+**Journal**：写真・音声・筆跡を自動整理し"思い出アルバム"を生成
+
+**Apple Games**：クラウドとローカル双方のゲームを統合したハブ。M シリーズ iPad 限定で AAA タイトルのストリーミングも
+
+## 4. まとめ & 買い替えガイド
+
+今回の「**iOS 26 対応機種 iPad**」を一言でまとめると、**「A12 チップ以降はアップデート OK だが、AI 機能は M1/A17 Pro 世代以降のみ」** です。
+
+### 買い替え推奨パターン
+
+**iPad (第7世代) ユーザー**：最新 iPadOS が使えないため、最低でも第10世代 iPad へ乗り換え推奨
+
+**A12Z/A12X 搭載 iPad Pro**：Apple Intelligence を使いたいなら M1 以降の iPad Pro へ
+
+**A14/A15 世代 (mini6, Air4)**：アップデートは可能。AI が不要なら様子見もアリ
+
+### チェックリスト
+
+1. まず「設定 › 一般 › ソフトウェアアップデート」で iPadOS 26 ベータが表示されるか確認
+2. 表示されなければチップ世代を確認（A12 未満は非対応）
+3. Apple Intelligence を使うなら M1/A17 Pro 以上
+
+購入を検討中の方は、**「M シリーズ iPad」＋「最低 256 GB ストレージ」**を選ぶと iPadOS 26 の新機能を余すところなく試せます。迷ったら 2025 年モデルの **iPad Air 13″ (M3)** がバランス最強です。
+
+---
+
+※ 本記事は 2025 年 6 月 10 日時点の情報です。正式リリース前のベータ内容は変わる可能性があります。最新情報は Apple 公式サイトをご確認ください。`,
+    date: new Date('2025-06-10'),
+    slug: 'ios-26-ipad-compatibility-guide',
+    category: '技術',
+    excerpt: 'WWDC 25で発表されたiPadOS 26対応機種を完全網羅！Apple Intelligence対応モデル、新機能、買い替えガイドまで詳しく解説します。'
+  },
   'hayashihara-megumi-blog-controversy': {
     id: '5',
     title: '「林原めぐみブログ炎上」徹底解説｜発端・修正・余波を時系列で追う',

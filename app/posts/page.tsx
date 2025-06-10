@@ -8,6 +8,15 @@ import AdUnit from '@/components/AdUnit'
 // サンプル記事データ（日付順に並び替え）
 const allPosts = [
   {
+    id: '6',
+    title: '【2025年最新版】iOS 26 対応機種 iPad 完全ガイド',
+    excerpt: 'WWDC 25で発表されたiPadOS 26対応機種を完全網羅！Apple Intelligence対応モデル、新機能、買い替えガイドまで詳しく解説します。',
+    date: new Date('2025-06-10'),
+    slug: 'ios-26-ipad-compatibility-guide',
+    category: '技術',
+    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&h=400&fit=crop&auto=format&q=80'
+  },
+  {
     id: '5',
     title: '「林原めぐみブログ炎上」徹底解説｜発端・修正・余波を時系列で追う',
     excerpt: '声優界のレジェンド林原めぐみさんのブログ投稿が炎上した一連の騒動を詳しく解説。韓国への言及、記事修正、SNSでの反応まで時系列で徹底分析。',
