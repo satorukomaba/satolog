@@ -639,6 +639,17 @@ export default function PostPage({ params }: Props) {
             />
           </div>
         )}
+        
+        {post.slug === 'ios-26-ipad-compatibility-guide' && (
+          <div className="relative w-full h-64 md:h-80 mb-16 overflow-hidden rounded-lg">
+            <Image
+              src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1200&h=600&fit=crop&auto=format&q=80"
+              alt="iPad Pro with Apple Pencil - iOS 26 iPadOS compatibility"
+              fill
+              className="object-cover"
+            />
+          </div>
+        )}
 
         {/* AdSense広告 */}
         <AdUnit slot="1111111111" />
