@@ -6,10 +6,19 @@ import { ja } from 'date-fns/locale'
 import AdUnit from '@/components/AdUnit'
 import SearchBar from '@/components/SearchBar'
 
-// サンプル記事データ
-const samplePosts = [
+// 最新記事データ
+const latestPosts = [
   {
     id: '6',
+    title: '【ネタバレ注意】ジークアクス 10話 感想｜ギレン退場とヨマグヌッソ発動、マチュ vs ニャアン対峙',
+    excerpt: '第10話予告は、本格的な戦争の予兆と遂に登場するギレン・ザビを強調しました。キシリアによるギレン暗殺から超兵器ヨマグヌッソ発動まで、怒涛の展開を徹底解説！',
+    date: new Date('2025-06-13'),
+    slug: 'gundam-seed-axios-episode-10-review',
+    category: 'アニメ',
+    image: '/00115-3618800821.png'
+  },
+  {
+    id: '3',
     title: '【2025年最新版】iOS 26 対応機種 iPad 完全ガイド',
     excerpt: 'WWDC 25で発表されたiPadOS 26対応機種を完全網羅！Apple Intelligence対応モデル、新機能、買い替えガイドまで詳しく解説します。',
     date: new Date('2025-06-10'),
@@ -18,7 +27,7 @@ const samplePosts = [
     image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&h=400&fit=crop&auto=format&q=80'
   },
   {
-    id: '5',
+    id: '4',
     title: '「林原めぐみブログ炎上」徹底解説｜発端・修正・余波を時系列で追う',
     excerpt: '声優界のレジェンド林原めぐみさんのブログ投稿が炎上した一連の騒動を詳しく解説。韓国への言及、記事修正、SNSでの反応まで時系列で徹底分析。',
     date: new Date('2025-06-09'),
@@ -27,24 +36,15 @@ const samplePosts = [
     image: '/00325-2107443118.png'
   },
   {
-    id: '4',
+    id: '4b',
     title: '【スト6シーズン3まとめ】大型バランス調整とYear 3キャラ解説',
-    excerpt: 'ストリートファイター6のSeason 3大型アップデートを詳しく解説。システム変更からキャラ調整、Year 3新キャラまで徹底まとめ。',
+    excerpt: '――僕は豪鬼を使い続けるか？ それともリュウで"波動"デビューするか？ Season 3の大型アップデート内容と個人的な使用キャラ検討記録。',
     date: new Date('2025-06-08'),
     slug: 'sf6-season3-summary',
     category: 'ゲーム',
     image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=400&fit=crop&auto=format&q=80'
-  },
-  {
-    id: '3',
-    title: '今期視聴アニメ "ゆるっと感想まとめ"',
-    excerpt: 'ガンダム初心者でも気軽に読めるネタバレ控えめのファンコラム。ジークアクス、片田舎のおっさん、にんころの3作品を紹介します。',
-    date: new Date('2025-06-05'),
-    slug: 'anime-review-2024',
-    category: 'アニメ',
-    image: '/anime-article-image.png'
   }
-]
+].sort((a, b) => b.date.getTime() - a.date.getTime())
 
 export default function Home() {
   return (
@@ -108,7 +108,7 @@ export default function Home() {
       <section className="mb-20">
         <h2 className="text-sm font-light text-gray-900 tracking-wider mb-8 border-b border-gray-100 pb-4">新着情報</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {samplePosts.map((post) => (
+          {latestPosts.map((post) => (
             <article key={post.id} className="group">
               <div className="relative w-full h-48 bg-gray-100 mb-4 overflow-hidden rounded-lg">
                 <Image
@@ -155,7 +155,7 @@ export default function Home() {
       <section className="mb-20">
         <h2 className="text-sm font-light text-gray-900 tracking-wider mb-8 border-b border-gray-100 pb-4">人気の記事</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {samplePosts.map((post) => (
+          {latestPosts.map((post) => (
             <article key={post.id + '-popular'} className="group">
               <div className="relative w-full h-48 bg-gray-100 mb-4 overflow-hidden rounded-lg">
                 <Image
