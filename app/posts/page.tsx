@@ -71,6 +71,16 @@ const allPosts = [
     category: 'アニメ',
     image: '/anime-article-image.png',
     tags: ['アニメ', 'レビュー', 'ガンダム']
+  },
+  {
+    id: '6',
+    title: '【ネタバレ注意】ジークアクス 10話 感想・考察｜イオマグヌッソ封鎖でギレン退場、マチュとニャアン激突前夜',
+    excerpt: 'アニメ『機動戦士ガンダム ジークアクス』第10話「イオマグヌッソ封鎖」のあらすじ・伏線回収・作画評価・海外と日本の反応・次回予想を徹底解説！ギレン退場の衝撃とマチュ vs ニャアン対峙まで。',
+    date: new Date('2025-06-12'),
+    slug: 'gundam-seed-axios-episode-10-review',
+    category: 'アニメ',
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=400&fit=crop&auto=format&q=80',
+    tags: ['ガンダム', 'アニメ', 'レビュー', 'ジークアクス', '感想']
   }
 ].sort((a, b) => b.date.getTime() - a.date.getTime())
 
