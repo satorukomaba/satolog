@@ -3,15 +3,13 @@ const withMDX = require('@next/mdx')({
   options: {
     remarkPlugins: [],
     rehypePlugins: [],
+    providerImportSource: '@mdx-js/react'
   },
 })
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
-  experimental: {
-    mdxRs: true,
-  },
   images: {
     domains: ['example.com', 'images.unsplash.com'],
     formats: ['image/webp', 'image/avif'],

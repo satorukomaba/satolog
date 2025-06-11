@@ -50,6 +50,48 @@ npm run dev
 
 http://localhost:3000 でアクセスできます。
 
+## 記事の作成と管理
+
+### 新しい記事を作成
+
+```bash
+# CLIを使った対話的な記事作成
+npm run new-post
+
+# またはバッチファイル（Windows）
+new-post.bat
+
+# 状況確認（Windows）
+check-status.bat
+```
+
+利用可能なテンプレート：
+- **デフォルト**: 基本的なブログ記事
+- **レビュー**: 作品レビュー用のフォーマット
+- **チュートリアル**: 手順説明用のフォーマット  
+- **お知らせ**: 告知用のフォーマット
+
+### 記事一覧の確認
+
+```bash
+npm run posts
+
+# またはバッチファイル（Windows）
+list-posts.bat
+```
+
+記事の作成後は、自動的に以下が生成されます：
+- 投稿ディレクトリ（`app/posts/記事名/`）
+- MDXファイル（`page.mdx`）
+- Frontmatter（メタデータ）
+
+### 記事の編集
+
+```bash
+# VS Codeで直接開く
+code app/posts/記事名/page.mdx
+```
+
 ## AdSense設定
 
 1. Google AdSense のアカウントを取得

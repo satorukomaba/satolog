@@ -24,7 +24,7 @@ const samplePosts = [
     date: new Date('2025-06-09'),
     slug: 'hayashihara-megumi-blog-controversy',
     category: 'エンタメ',
-    image: '/hayashihara-megumi-blog.png'
+    image: '/00325-2107443118.png'
   },
   {
     id: '4',

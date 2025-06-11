@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "new-post": "node scripts/create-post.js",
+    "post": "node scripts/create-post.js",
+    "list-posts": "node scripts/list-posts.js",
+    "posts": "node scripts/list-posts.js"
   },
   "dependencies": {
     "next": "14.0.4",

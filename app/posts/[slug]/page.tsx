@@ -1,18 +1,199 @@
-import React from 'react'
-import Image from 'next/image'
+import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
+import Link from 'next/link'
+import Image from 'next/image'
 import { format } from 'date-fns'
 import { ja } from 'date-fns/locale'
-import ShareButtons from '@/components/ShareButtons'
-import AdUnit from '@/components/AdUnit'
 
-// サンプル記事データ
-const posts = {
-  'first-post': {
-    id: '1',
+// 利用可能な記事データ（実際のアプリでは外部データソースから取得）
+const availablePosts = [
+  {
+    slug: 'how-i-built-this-blog',
+    title: 'このブログを作った方法について',
+    date: new Date('2025-06-02'),
+    category: '技術',
+    tags: ['ブログ', 'Next.js', 'TypeScript', 'Vercel', '開発'],
+    image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=400&fit=crop&auto=format&q=80',
+    content: `
+プログラミング初心者だった私が、このブログ「サトログ」をどのように作ったかを、できるだけわかりやすく説明してみます。
+
+専門用語も出てきますが、初心者の方にもイメージしやすいように心がけて書きました。
+
+## そもそもブログを自作するって？
+
+普通、ブログを始める時は以下のような方法がありますが：
+
+**はてなブログ**や**note**などのサービスを使う
+**WordPress**でブログを作る
+**自分でプログラムを書いて**ブログを作る ← 今回はコレ！
+
+自作の良いところは、デザインも機能も完全に自分好みにできることです。
+
+## 使った技術（初心者向け解説付き）
+
+### プログラミング言語・フレームワーク
+- **HTML/CSS/JavaScript**: Webページを作るための基本言語
+- **TypeScript**: JavaScriptをより安全に書けるようにした言語
+- **React**: Webページを部品（コンポーネント）として組み立てられるライブラリ
+- **Next.js**: Reactをもっと使いやすくしたフレームワーク
+
+### スタイリング（見た目を作る部分）
+- **Tailwind CSS**: CSSを簡単に書けるツール
+- 例：\`bg-blue-500\`と書くだけで青い背景になる
+
+### 開発環境・ツール
+- **Cursor**: AI搭載のコードエディタ（後で詳しく説明します）
+- **GitHub**: プログラムのソースコードを保存・管理するサービス
+- **Vercel**: 作ったブログを世界中の人が見られるようにするサービス
+
+## なぜこれらの技術を選んだのか？
+
+### Next.jsを選んだ理由
+- **高速表示**: ページが素早く表示される
+- **SEO対策**: Googleなどの検索エンジンに見つけてもらいやすい
+- **学習しやすい**: 情報がたくさんある
+- **無料でデプロイできる**: Vercelと相性が良い
+
+### Tailwind CSSを選んだ理由
+- **書きやすい**: 普通のCSSより楽
+- **統一感**: デザインがバラバラにならない
+- **レスポンシブ**: スマホでもPCでも綺麗に表示される
+
+## 開発環境について：Cursorが最高だった話
+
+### Cursorって何？
+**Cursor**は、AIが搭載されたコードエディタです。VSCodeの進化版のようなもので、以下の点が素晴らしいです：
+
+### 1. AIコード補完
+- 何を書きたいかを理解して、自動でコードを提案してくれる
+- 「ブログのヘッダーコンポーネントを作りたい」と言えば、コードの雛形を作ってくれる
+
+### 2. エラーの修正支援
+- エラーが出た時、AIが原因と解決方法を教えてくれる
+- 初心者の私にとって、この機能は本当に助かりました
+
+### 3. コード解説
+- 既存のコードが何をしているか説明してくれる
+- 他の人が書いたコードを理解するのに役立つ
+
+## 実際の開発体験
+
+Cursorを使うことで、プログラミング初心者でも以下のことができました：
+
+- 「React コンポーネント ブログカード」と伝えれば基本構造を作成
+- エラーが出ても、AIが「ここが間違ってます」と教えてくれる
+- 「このコードをもっと綺麗にして」と頼めば、リファクタリングしてくれる
+
+## 実際の作り方（ステップバイステップ）
+
+### ステップ1: プロジェクトを作る
+
+\`\`\`bash
+npx create-next-app@latest my-blog --typescript --tailwind --app
+\`\`\`
+
+これだけで、ブログの基本構造ができあがります。
+
+### ステップ2: フォルダ構成を整理
+
+\`\`\`
+my-blog/
+├── app/         # ページのファイル
+├── components/  # 再利用するパーツ
+├── public/      # 画像などの静的ファイル
+└── ...
+\`\`\`
+
+### ステップ3: デザインを作る
+Tailwind CSSを使って、スマホでもPCでも見やすいデザインにしました。
+
+### ステップ4: 記事システムを作る
+現在は記事をTypeScriptのオブジェクトとして管理しています（将来的にはもっと楽な方法に変更予定）。
+
+### ステップ5: デプロイ（公開）
+Vercelというサービスを使って、無料でブログを公開しました。
+
+## 初心者が躓いたポイントと解決法
+
+### 1. TypeScriptの型エラー
+**問題**: 「Property 'title' does not exist on type...」みたいなエラー
+
+**解決**: Cursorに聞いたら、型定義の書き方を教えてくれた
+
+### 2. レスポンシブデザイン
+**問題**: スマホで見ると崩れる
+
+**解決**: Tailwindの\`sm:\`、\`md:\`、\`lg:\`を使って画面サイズ別に調整
+
+### 3. デプロイエラー
+**問題**: Vercelでエラーが出る
+
+**解決**: GitHubにプッシュし忘れていただけだった
+
+## パフォーマンス最適化（難しそうだけど実は簡単）
+
+### 画像の最適化
+Next.jsの\`Image\`コンポーネントを使うだけで、自動で最適化されます。
+
+### 読み込み速度の向上
+Next.jsが勝手にやってくれるので、特別な設定は不要でした。
+
+## 今後やりたいこと
+
+### 機能面
+- [ ] 記事の検索機能
+- [ ] カテゴリー別表示
+- [ ] 人気記事ランキング
+- [ ] お問い合わせフォーム
+
+### 技術面
+- [ ] CMSの導入（記事をもっと楽に管理したい）
+- [ ] コメント機能
+- [ ] 多言語対応
+
+## 費用について
+
+このブログの運営費用は**月0円**です！
+
+- **Vercel**: 個人利用なら無料
+- **GitHub**: パブリックリポジトリは無料
+- **ドメイン**: まだ独自ドメインは取得していない
+
+## 初心者へのアドバイス
+
+### 1. 完璧を求めすぎない
+最初は動くものを作ることが大切。細かい部分は後から改善できます。
+
+### 2. AIツールを活用する
+Cursorのようなツールを使えば、初心者でも本格的なものが作れます。
+
+### 3. エラーを恐れない
+エラーは学習の機会。Cursorが解決方法を教えてくれるので安心です。
+
+### 4. 小さく始める
+いきなり複雑な機能を作らず、シンプルなブログから始めるのがオススメ。
+
+## まとめ
+
+プログラミング初心者でも、現代のツール（特にCursor）を使えば、自分だけのブログを作ることができます。
+
+このブログも、まだまだ改善の余地がたくさんありますが、自分で作ったという達成感は格別です。
+
+**これからブログを自作してみたい方へ：**
+
+最初は難しく感じるかもしれませんが、一歩ずつ進めば必ず完成させることができます。わからないことがあれば、SNSでお気軽に質問してください！
+
+技術的な質問や、Cursorの使い方について知りたいことがあれば、いつでもお声がけくださいね。
+    `
+  },
+  {
+    slug: 'blog-launch-hello-world',
     title: '初回投稿：ブログを始めました',
-    content: `# 初回投稿：ブログを始めました
-
+    date: new Date('2025-06-01'),
+    category: 'お知らせ',
+    tags: ['ブログ', '開始', 'Next.js', '技術'],
+    image: '/hero-image.png',
+    content: `
 こんにちは！「サトログ」へようこそ。
 
 この度、雑記ブログを始めることにしました。最初の投稿ということで、なぜこのブログを立ち上げたのか、そして今後どのような内容を発信していきたいかについて書いてみたいと思います。
@@ -20,17 +201,14 @@ const posts = {
 ## なぜブログを始めたのか
 
 ### アウトプットの重要性を実感
-
 普段の生活の中で、本を読んだり、新しい技術を学んだり、面白い体験をしたりすることがありますが、それらの学びや体験を自分の中だけに留めておくのはもったいないと感じるようになりました。
 
 アウトプットすることで、自分の理解が深まるだけでなく、同じような興味を持つ人との出会いも期待できるのではないかと思います。
 
 ### 記録として残したい
-
 人間の記憶は曖昧で、時間が経つと大切な学びや体験も忘れてしまいがちです。ブログという形で記録を残すことで、将来の自分にとっても価値のあるアーカイブになるのではないかと考えています。
 
 ### 文章力を向上させたい
-
 普段の仕事では技術的な文書を書くことが多いのですが、もう少し自由な文章を書く機会を作りたいと思っていました。ブログを通じて、より読みやすい文章を書けるようになりたいです。
 
 ## このブログで扱う予定のトピック
@@ -70,213 +248,304 @@ const posts = {
 
 何かご意見やご感想がありましたら、SNSなどでお気軽にお声がけください。
 
-これからよろしくお願いします！`,
-    date: new Date('2025-06-01'),
-    slug: 'first-post',
-    category: '日記',
-    excerpt: 'サトログを始めた理由と今後の展望について詳しく書きました。ブログを通じて学びをシェアし、読者の皆様との交流を楽しみにしています。'
+これからよろしくお願いします！
+    `
   },
-  'web-development-thoughts': {
-    id: '2',
-    title: 'このブログを作った方法について',
-    content: `# このブログを作った方法について
+  {
+    slug: 'test-post-new-feature-check',
+    title: 'Test Post - New Feature Check',
+    date: new Date('2025-06-11'),
+    category: 'テスト',
+    tags: ['テスト', '機能確認', 'ブログ'],
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop&auto=format&q=80',
+    content: `
+このテスト投稿では、新しく実装されたブログ投稿システムの機能を確認しています。
 
-プログラミング初心者だった私が、このブログ「サトログ」をどのように作ったかを、できるだけわかりやすく説明してみます。
+## 実装された機能
 
-専門用語も出てきますが、初心者の方にもイメージしやすいように心がけて書きました。
+### 1. 自動投稿作成システム
+- CLIベースの対話的な投稿作成
+- 複数のテンプレート選択
+- 自動スラッグ生成
+- フロントマター自動設定
 
-## そもそもブログを自作するって？
+### 2. 投稿管理機能
+- 投稿一覧表示
+- タイトル・日付の自動抽出
+- TypeScript対応
 
-普通、ブログを始める時は以下のような方法がありますが：
-- **はてなブログ**や**note**などのサービスを使う
-- **WordPress**でブログを作る
-- **自分でプログラムを書いて**ブログを作る ← 今回はコレ！
+### 3. テンプレート機能
+以下のテンプレートが利用可能です：
 
-自作の良いところは、デザインも機能も完全に自分好みにできることです。
+- **デフォルト**: 基本的なブログ記事
+- **レビュー**: 作品レビュー用のフォーマット
+- **チュートリアル**: 手順説明用のフォーマット
+- **お知らせ**: 告知用のフォーマット
 
-## 使った技術（初心者向け解説付き）
+## 使用方法
 
-### プログラミング言語・フレームワーク
-- **HTML/CSS/JavaScript**: Webページを作るための基本言語
-- **TypeScript**: JavaScriptをより安全に書けるようにした言語
-- **React**: Webページを部品（コンポーネント）として組み立てられるライブラリ
-- **Next.js**: Reactをもっと使いやすくしたフレームワーク
+新しい投稿を作成するには：
 
-### スタイリング（見た目を作る部分）
-- **Tailwind CSS**: CSSを簡単に書けるツール
-  - 例：\`bg-blue-500\`と書くだけで青い背景になる
-
-### 開発環境・ツール
-- **Cursor**: AI搭載のコードエディタ（後で詳しく説明します）
-- **GitHub**: プログラムのソースコードを保存・管理するサービス
-- **Vercel**: 作ったブログを世界中の人が見られるようにするサービス
-
-## なぜこれらの技術を選んだのか？
-
-### Next.jsを選んだ理由
-1. **高速表示**: ページが素早く表示される
-2. **SEO対策**: Googleなどの検索エンジンに見つけてもらいやすい
-3. **学習しやすい**: 情報がたくさんある
-4. **無料でデプロイできる**: Vercelと相性が良い
-
-### Tailwind CSSを選んだ理由
-1. **書きやすい**: 普通のCSSより楽
-2. **統一感**: デザインがバラバラにならない
-3. **レスポンシブ**: スマホでもPCでも綺麗に表示される
-
-## 開発環境について：Cursorが最高だった話
-
-### Cursorって何？
-**Cursor**は、AIが搭載されたコードエディタです。VSCodeの進化版のようなもので、以下の点が素晴らしいです：
-
-#### 1. AIコード補完
-- 何を書きたいかを理解して、自動でコードを提案してくれる
-- 「ブログのヘッダーコンポーネントを作りたい」と言えば、コードの雛形を作ってくれる
-
-#### 2. エラーの修正支援
-- エラーが出た時、AIが原因と解決方法を教えてくれる
-- 初心者の私にとって、この機能は本当に助かりました
-
-#### 3. コード解説
-- 既存のコードが何をしているか説明してくれる
-- 他の人が書いたコードを理解するのに役立つ
-
-### 実際の開発体験
-Cursorを使うことで、プログラミング初心者でも以下のことができました：
-- 「React コンポーネント ブログカード」と伝えれば基本構造を作成
-- エラーが出ても、AIが「ここが間違ってます」と教えてくれる
-- 「このコードをもっと綺麗にして」と頼めば、リファクタリングしてくれる
-
-## 実際の作り方（ステップバイステップ）
-
-### ステップ1: プロジェクトを作る
 \`\`\`bash
-npx create-next-app@latest my-blog --typescript --tailwind --app
-\`\`\`
-これだけで、ブログの基本構造ができあがります。
-
-### ステップ2: フォルダ構成を整理
-\`\`\`
-my-blog/
-├── app/          # ページのファイル
-├── components/   # 再利用するパーツ
-├── public/       # 画像などの静的ファイル
-└── ...
+npm run new-post
 \`\`\`
 
-### ステップ3: デザインを作る
-Tailwind CSSを使って、スマホでもPCでも見やすいデザインにしました。
+または Windows の場合：
 
-### ステップ4: 記事システムを作る
-現在は記事をTypeScriptのオブジェクトとして管理しています（将来的にはもっと楽な方法に変更予定）。
+\`\`\`bash
+new-post.bat
+\`\`\`
 
-### ステップ5: デプロイ（公開）
-Vercelというサービスを使って、無料でブログを公開しました。
+## 技術的な改善
 
-## 初心者が躓いたポイントと解決法
+- MDXからTSXへの移行によるエラー解決
+- Server Component対応
+- 美しいUIデザインの実装
+- レスポンシブデザイン対応
 
-### 1. TypeScriptの型エラー
-**問題**: 「Property 'title' does not exist on type...」みたいなエラー
-**解決**: Cursorに聞いたら、型定義の書き方を教えてくれた
+これで投稿作成が格段に楽になりました！
+    `
+  },
+  {
+    slug: 'movie-review-spider-man-into-the-spider-verse',
+    title: 'Movie Review - Spider-Man Into the Spider-Verse',
+    date: new Date('2025-06-11'),
+    category: '映画',
+    tags: ['映画', 'レビュー', 'アニメーション'],
+    image: 'https://images.unsplash.com/photo-1489599904828-9c2c3e5e5b7f?w=800&h=400&fit=crop&auto=format&q=80',
+    content: `
+スパイダーマン：スパイダーバースは、アニメーション映画の新たな可能性を示した革新的な作品です。
 
-### 2. レスポンシブデザイン
-**問題**: スマホで見ると崩れる
-**解決**: Tailwindの\`sm:\`、\`md:\`、\`lg:\`を使って画面サイズ別に調整
+## 概要
 
-### 3. デプロイエラー
-**問題**: Vercelでエラーが出る
-**解決**: GitHubにプッシュし忘れていただけだった
+この作品は、複数の次元から集まったスパイダーマンたちが協力して世界を救う物語です。マイルス・モラレスという新しいスパイダーマンの成長物語でもあります。
 
-## パフォーマンス最適化（難しそうだけど実は簡単）
+## 評価
 
-### 画像の最適化
-Next.jsの\`Image\`コンポーネントを使うだけで、自動で最適化されます。
+⭐⭐⭐⭐⭐ (5段階評価)
 
-### 読み込み速度の向上
-Next.jsが勝手にやってくれるので、特別な設定は不要でした。
+## 良かった点
 
-## 今後やりたいこと
+- **革新的なビジュアル**: コミックブックとアニメーションを融合させた独特な映像スタイル
+- **感動的なストーリー**: 成長物語として非常に完成度が高い
+- **優れた音楽**: 映像と完璧にマッチしたサウンドトラック
+- **キャラクター開発**: 各スパイダーマンが個性的で魅力的
 
-### 機能面
-- [ ] 記事の検索機能
-- [ ] カテゴリー別表示
-- [ ] 人気記事ランキング
-- [ ] お問い合わせフォーム
+## 改善点
 
-### 技術面
-- [ ] CMSの導入（記事をもっと楽に管理したい）
-- [ ] コメント機能
-- [ ] 多言語対応
+- **複雑な設定**: 初見の人には少し理解が困難かもしれない
+- **ペーシング**: 一部のシーンでテンポが落ちる箇所がある
 
-## 費用について
+## 総評
 
-このブログの運営費用は**月0円**です！
-- Vercel: 個人利用なら無料
-- GitHub: パブリックリポジトリは無料
-- ドメイン: まだ独自ドメインは取得していない
+視覚的に革新的で、感情的にも深く響く作品です。アニメーション映画の歴史に残る傑作と言えるでしょう。スパイダーマンファンはもちろん、アニメーション愛好家にも強くおすすめします。
 
-## 初心者へのアドバイス
+## おすすめ度
 
-### 1. 完璧を求めすぎない
-最初は動くものを作ることが大切。細かい部分は後から改善できます。
+- **こんな人におすすめ**: スパイダーマンファン、アニメーション愛好家、革新的な映像作品を求める人
+- **避けた方が良い人**: 従来的なストーリーテリングを好む人、複雑な世界観が苦手な人
 
-### 2. AIツールを活用する
-Cursorのようなツールを使えば、初心者でも本格的なものが作れます。
-
-### 3. エラーを恐れない
-エラーは学習の機会。Cursorが解決方法を教えてくれるので安心です。
-
-### 4. 小さく始める
-いきなり複雑な機能を作らず、シンプルなブログから始めるのがオススメ。
-
-## まとめ
-
-プログラミング初心者でも、現代のツール（特にCursor）を使えば、自分だけのブログを作ることができます。
-
-このブログも、まだまだ改善の余地がたくさんありますが、自分で作ったという達成感は格別です。
-
-**これからブログを自作してみたい方へ：**
-最初は難しく感じるかもしれませんが、一歩ずつ進めば必ず完成させることができます。わからないことがあれば、SNSでお気軽に質問してください！
-
-技術的な質問や、Cursorの使い方について知りたいことがあれば、いつでもお声がけくださいね。`,
-    date: new Date('2025-06-02'),
-    slug: 'web-development-thoughts',
+この作品は間違いなく、アニメーション映画の新たな基準を設定した作品です。
+    `
+  },
+  {
+    slug: 'ios-26-ipad-compatibility-guide',
+    title: '【2025年最新版】iOS 26 対応機種 iPad 完全ガイド',
+    date: new Date('2025-06-10'),
     category: '技術',
-    excerpt: 'プログラミング初心者がNext.js + Cursor AIエディタを使ってブログを自作した体験談。初心者向けに技術選択の理由から実装まで詳しく解説。'
+    tags: ['iOS', 'iPad', 'Apple', '技術'],
+    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=800&h=400&fit=crop&auto=format&q=80',
+    content: `WWDC 25 で発表された **iPadOS 26**（iOS 26）対応モデルを一覧でチェック！さらに **Apple Intelligence** が使える iPad もまとめて紹介します。
+
+## 目次
+- [iPadOS 26 対応モデル一覧](#list)
+- [Apple Intelligence が動く iPad](#ai)
+- [iPadOS 26 の注目新機能](#features)
+- [まとめ & 買い替えガイド](#summary)
+
+## 1. iPadOS 26 対応モデル一覧
+
+Apple 公式発表と主要メディア報道を基に、**iOS 26（iPadOS 26）にアップデート可能な iPad 全モデル**を整理しました。旧型の **iPad (第7世代／A10 チップ)** は今回でサポート終了となる点に注意してください。
+
+### 対応機種一覧表
+
+**通常 iPad シリーズ**
+
+- iPad (第11世代) / A16 チップ ✔ iPadOS 26対応
+- iPad (第10世代) / A14 チップ ✔ iPadOS 26対応  
+- iPad (第9世代) / A13 チップ ✔ iPadOS 26対応
+- iPad (第8世代) / A12 チップ ✔ iPadOS 26対応
+- **iPad (第7世代) / A10 チップ ✗ サポート終了**
+
+**iPad Air シリーズ**
+
+- iPad Air 13″ (2025) / M3 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air 11″ (2025) / M3 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air 13″ (2024) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air 11″ (2024) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air (第5世代) / M1 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Air (第4世代) / A14 チップ ✔ iPadOS 26対応
+- iPad Air (第3世代) / A12 チップ ✔ iPadOS 26対応
+
+**iPad mini シリーズ**
+
+- iPad mini (第7世代) / A17 Pro チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad mini (第6世代) / A15 チップ ✔ iPadOS 26対応
+- iPad mini (第5世代) / A12 チップ ✔ iPadOS 26対応
+
+**iPad Pro シリーズ**
+
+- iPad Pro 11″ (2024) / M4 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 11″ (第4世代) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 11″ (第3世代) / M1 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 11″ (第2世代) / A12Z チップ ✔ iPadOS 26対応
+- iPad Pro 11″ (第1世代) / A12X チップ ✔ iPadOS 26対応
+- iPad Pro 13″ (2024) / M4 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 12.9″ (第6世代) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 12.9″ (第5世代) / M1 チップ ✔ iPadOS 26対応 + Apple Intelligence
+- iPad Pro 12.9″ (第4世代) / A12Z チップ ✔ iPadOS 26対応
+- iPad Pro 12.9″ (第3世代) / A12X チップ ✔ iPadOS 26対応
+
+✔＝アップデート可能 / ✗＝非対応
+
+## 2. Apple Intelligence が動く iPad
+
+**Apple Intelligence**（AI 生成アシスト、Contextual Siri など）は、**M1 / M2 / M3 / M4** または **A17 Pro** を搭載した iPad でのみ利用できます。現時点で日本語にも対応しているため、対象モデルなら追加設定なしで新しい AI 機能を試せます。
+
+### Apple Intelligence 対応機種
+- iPad Air (第5世代) 以降
+- iPad mini (第7世代)
+- iPad Pro 11″ (第3世代) 以降
+- iPad Pro 12.9″ (第5世代) 以降
+
+**ポイント**：A14／A15 世代でも iPadOS 26 自体は動きますが、Apple Intelligence は**非対応**です。
+
+## 3. iPadOS 26 の注目新機能
+
+### Liquid Glass UI
+iPad 全体のウィンドウが「液体ガラス」風に透過。11″ 以上のモデルでは 120 Hz でアニメーションするため、ProMotion と相性抜群。
+
+### 新マルチウィンドウ & バックグラウンド
+Slide Over と Split View が統合され、ドラッグ 1 回で 4 ウィンドウ同時表示に。バックグラウンド処理も強化されて動画書き出し中に別アプリを操作しても速度が落ちません。
+
+### ローカル収録 & 高音質録音
+外部マイク選択・ノイズ分離に対応し、**AirPods Pro**接続時も 48 kHz/24bit で録音可能。ポッドキャスター必見！
+
+### 新アプリ: Journal & Apple Games
+**Journal**：写真・音声・筆跡を自動整理し"思い出アルバム"を生成
+
+**Apple Games**：クラウドとローカル双方のゲームを統合したハブ。M シリーズ iPad 限定で AAA タイトルのストリーミングも
+
+## 4. まとめ & 買い替えガイド
+
+今回の「**iOS 26 対応機種 iPad**」を一言でまとめると、**「A12 チップ以降はアップデート OK だが、AI 機能は M1/A17 Pro 世代以降のみ」** です。
+
+### 買い替え推奨パターン
+**iPad (第7世代) ユーザー**：最新 iPadOS が使えないため、最低でも第10世代 iPad へ乗り換え推奨
+
+**A12Z/A12X 搭載 iPad Pro**：Apple Intelligence を使いたいなら M1 以降の iPad Pro へ
+
+**A14/A15 世代 (mini6, Air4)**：アップデートは可能。AI が不要なら様子見もアリ
+
+### チェックリスト
+1. まず「設定 › 一般 › ソフトウェアアップデート」で iPadOS 26 ベータが表示されるか確認
+2. 表示されなければチップ世代を確認（A12 未満は非対応）
+3. Apple Intelligence を使うなら M1/A17 Pro 以上
+
+購入を検討中の方は、**「M シリーズ iPad」＋「最低 256 GB ストレージ」**を選ぶと iPadOS 26 の新機能を余すところなく試せます。迷ったら 2025 年モデルの **iPad Air 13″ (M3)** がバランス最強です。
+
+---
+
+※ 本記事は 2025 年 6 月 10 日時点の情報です。正式リリース前のベータ内容は変わる可能性があります。最新情報は Apple 公式サイトをご確認ください。
+    `
   },
-  'book-review-2024': {
-    id: '3',
-    title: '読書記録：今年読んだ本たち',
-    content: `# 読書記録：今年読んだ本たち
+  {
+    slug: 'hayashihara-megumi-blog-controversy',
+    title: '「林原めぐみブログ炎上」徹底解説｜発端・修正・余波を時系列で追う',
+    date: new Date('2025-06-09'),
+    category: 'エンタメ',
+    tags: ['声優', 'ニュース', '炎上', 'エンタメ'],
+    image: '/00325-2107443118.png',
+    content: `国民的アニメキャラクターの声も数多く担当されている人気声優、林原めぐみさんのブログ投稿が、先日インターネット上で大きな波紋を呼び、「炎上」という言葉と共に語られています。彼女のファンとして、またこの出来事に関心を持つ一人として、一体何が起こったのか、その経緯と影響を時系列で追って解説します。
 
-2024年に読んだ本の中で、特に印象に残った作品をご紹介します。
+## 発端となったブログ投稿
 
-## ビジネス書
+事の発端は、林原めぐみさんが**「興味がない、わからない、知らない」**というタイトルでブログを投稿したことでした。ブログは「で いいんだろうか 本当に心配になって来ました」という言葉で始まります。
 
-### 「エフェクチュエーション」
-起業家の思考法について書かれた本。従来の予測型アプローチとは異なる、創造型のアプローチについて学べました。
+投稿の初期バージョンでは、林原さんは「楽しい旅行もさせてもらった おとなり韓国での事」として、**韓国の政治系YouTuber**に言及していました。そのYouTuberの動画には、「韓国のテレビと日本のテレビも放送しない内容」が含まれていたと述べています。さらに、「今、日本でも起きている 怖い事に繋がる まさかの報道規制」や「実際『陰謀論』とも言われている」ことにも触れ、「気になる人は探って見て下さい」「『自分の目』で判断してください」と読者に呼びかけていました。
 
-### 「チームトポロジー」
-組織とチームの構造について考察した本。ソフトウェア開発における組織設計の重要性を再認識しました。
+## 修正とその理由
 
-## 小説
+しかし、このYouTuberへの言及や報道規制、陰謀論に関する記述は、後にブログから削除・修正されています。
 
-### 「三体」シリーズ
-中国のSF小説。スケールの大きさと科学的な考察に圧倒されました。
+修正された文章によると、この変更は**「韓国の友人から連絡」**を受けたためだといいます。友人は、現在の韓国国内では右派と左派の対立があり、林原さんの発言がどちらかを支持しているように受け取られかねず、「いらぬ争いに火をつける事になる」と指摘したそうです。林原さんは、「部外者」である自身が安易に話題に取り上げることで「悲しむ人がいるとゆー事実」を知り、既に傷ついた人への謝罪や、これ以上傷つく人を増やさないために一部を割愛したと述べています。
+
+修正後の投稿でも、林原さんが「とにかく悲しいと伝えたかった」のは、**「声を上げる事すら冷ややかに 日本が日本に［無関心］な事」**であると強調されています。
+
+## ブログの主な内容と問題提起
+
+修正後のブログでも、林原さんは日本の現状に対するいくつかの懸念を表明しています。
+
+### 食料問題への疑問
+食料問題として**「米が無い？？？？ 日本に？？？」**と疑問を呈しています。
+
+### 教育支援制度の格差
+一部の海外留学生には「無償で補助」がある一方で、日本の学生への奨学金が「返さないといけないから 平たく言うと借金」であるという「曲がった真実」に言及しています。これは外国人留学生への給付型奨学金などと、日本人学生への貸与型奨学金との違いを指していると考えられます。
+
+### 日本らしさの危機
+日本の「無関心」が続けば、**「日本の日本らしさ」**である「マナーも、態度も、技術も」、そして「表現の自由としてのアニメも」失われるかもしれないという危機感を示しています。
+
+### マナー問題への指摘
+一部の「マナーの無い民泊の人」や「『譲る』を知らない海外観光客」、「京都の竹削ってしまったりする人もいる」といった事例に触れ、規制や取り締まりの必要性を訴えています。これは**「日本ザリガニが あっという間に外来種に喰われちゃったみたいに なってしまう」**という比喩を用いて、日本の「並んで買う」といった暗黙のルールが失われる可能性への懸念として語られています。
+
+### 税金の使い道について
+日本の税金は「まずは」「税金を納めた人達へ（納めた在日外国人は勿論含む）」、「日本の［被災地］に」、「今日本を支えている学生」に使って欲しいという考えを示し、これが**「排外主義と言われるのかしら」**と問いかけています。日本国内が疲弊すれば「［おもてなし］もできなくなる」とも述べています。
+
+「裏金の方が酷いし問題」であると認識していることも記されており、「とにかく、選挙権がある人は（18歳からね） 今一度、その権利を考えて欲しいと言いたかった」と、政治への関心と選挙への参加を強く訴えています。自身でも「やはり政治的な発言は、難しい」と感じているようです。
+
+## 波紋と様々な反応（余波）
+
+このブログ投稿はX（旧Twitter）で**「林原めぐみさん」がトレンド入り**するなど、大きな話題となりました。
+
+寄せられた反応は様々で、賛否両論となっています。
+
+### 批判的な意見
+- 外国人を「外来種」に例えたことへの強い反発
+- 「排外主義（ゼノフォビア）」ではないかという指摘
+- 外国人に関する記述に焦点が当たりすぎているという批判
+- 「外来種」の比喩が歴史的に差別や排除に使われてきた背景への警鐘
+- 外国人学生への援助が米不足に影響しているという主張への疑問
+- 「オールドジャパニーズピープルがレイシストなのはニュースではない」といった意見
+
+### 支持的な意見
+実業家の**三崎優太氏**は、「『不良外国人をちゃんと取り締まれ』、『日本人から集めた税金は優先して日本の為に使ってほしい』って当たり前のことでしょ。炎上する意味がわからない」と支持を表明しました。
+
+他のユーザーからも以下のような声が寄せられています：
+
+- 「至極真っ当なこと」「炎上する理由が分からない」
+- 「勇気ある発信」
+- 「排外主義とか言われてるけど別に間違ったこと言ってない」
+- 「日本人ファーストにしないと日本はヤバい」
+- 「有名人だから黙ってろ」と言う人々こそ差別的ではないかという反論
+- 外国人によるマナー違反や法執行の甘さを問題視する声
 
 ## まとめ
 
-読書を通じて新しい視点や知識を得ることができた一年でした。来年も継続して読書を続けていきたいと思います。`,
-    date: new Date('2024-01-05'),
-    slug: 'book-review-2024',
-    category: '読書',
-    excerpt: '2024年に読んだ本の中で特に印象に残ったものをご紹介します。'
-  },
-  'sf6-season3-summary': {
-    id: '4',
-    title: '【スト6シーズン3まとめ】大型バランス調整とYear 3キャラ解説',
-    content: `# 【スト6シーズン3まとめ】大型バランス調整とYear 3キャラ解説
+林原めぐみさんのブログ投稿は、日本の現状、特に政治や社会への無関心に対する強い危機感から、**「選挙に行くこと」の重要性を訴えること**が最も伝えたかったメッセージでした。
 
+その中で、外国人に関する記述を含む具体的な問題提起が大きな波紋を呼びましたが、そこには日本人学生への支援や社会のマナーといった、彼女なりの問題意識があったことがうかがえます。
+
+政治的な発言の難しさを自身でも感じながらも発信されたこのブログは、日本の抱える様々な課題や、外国人との共生について、多くの人々に議論を促すきっかけとなったと言えるでしょう。
+    `
+  },
+  {
+    slug: 'sf6-season3-summary',
+    title: '【スト6シーズン3まとめ】大型バランス調整とYear 3キャラ解説',
+    date: new Date('2025-06-08'),
+    category: 'ゲーム',
+    tags: ['ストリートファイター', 'ゲーム', '格闘ゲーム'],
+    image: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&h=400&fit=crop&auto=format&q=80',
+    content: `
 ――僕は豪鬼を使い続けるか？ それともリュウで"波動"デビューするか？
 
 ## 1. 6月上旬アップデートの全体像
@@ -300,19 +569,16 @@ Cursorのようなツールを使えば、初心者でも本格的なものが�
 
 ### リュウ ― "空中波動"でついに花開く？
 
-**電刃火力アップ：** 電刃チャージ中の必殺技ダメージ増加。
-
-**J中K > 立ち中P連係安定化：** 空中軸ズレが減りヒット確認が容易に。
-
-**新ターゲット：** 近距離2段TCが追加され、Drive Rush～弱Kから拾いやすくなりました。
+- **電刃火力アップ**: 電刃チャージ中の必殺技ダメージ増加。
+- **J中K > 立ち中P連係安定化**: 空中軸ズレが減りヒット確認が容易に。
+- **新ターゲット**: 近距離2段TCが追加され、Drive Rush～弱Kから拾いやすくなりました。
 
 → 総じて火力・ヒット確認力とも底上げされ、Tier予想では一気にS帯入り。
 
 ### 豪鬼 ― "紙装甲"据え置きで細かい弱体
 
-**空刃脚ガード時-4→-6F：** ガン攻め後のターン継続が難化。
-
-**昇竜拳系列に初期補正20%：** 安定コンボ火力が微減。
+- **空刃脚ガード時-4→-6F**: ガン攻め後のターン継続が難化。
+- **昇竜拳系列に初期補正20%**: 安定コンボ火力が微減。
 
 → 依然として高火力・択迫力は健在だが、リスク管理がさらにシビア。
 
@@ -373,203 +639,86 @@ Cursorのようなツールを使えば、初心者でも本格的なものが�
 - **ホットフィックスで不具合はほぼ解消**
 - **Year 3は往年の人気キャラ4人が続投、夏のサガットが最速**
 
-――というわけで、しばらくは電刃リュウで修行 → 豪鬼で荒らすの二刀流生活を試してみます。読者のみなさんも、自キャラの調整をチェックして触ってみてください！`,
-    date: new Date('2025-06-08'),
-    slug: 'sf6-season3-summary',
-    category: 'ゲーム',
-    excerpt: 'ストリートファイター6のSeason 3大型アップデートを詳しく解説。システム変更からキャラ調整、Year 3新キャラまで徹底まとめ。'
+――というわけで、しばらくは電刃リュウで修行 → 豪鬼で荒らすの二刀流生活を試してみます。読者のみなさんも、自キャラの調整をチェックして触ってみてください！
+    `
   },
-  'ios-26-ipad-compatibility-guide': {
-    id: '6',
-    title: '【2025年最新版】iOS 26 対応機種 iPad 完全ガイド',
-    content: `# 【2025年最新版】iOS 26 対応機種 iPad 完全ガイド
+  {
+    slug: 'anime-review-2024',
+    title: '今期視聴アニメ "ゆるっと感想まとめ"',
+    date: new Date('2025-06-05'),
+    category: 'アニメ',
+    tags: ['アニメ', 'レビュー', 'ガンダム'],
+    image: '/anime-article-image.png',
+    content: `
+『機動戦士ガンダム ジークアクス』／『片田舎のおっさん、剣聖になる』／『忍者と殺し屋のふたりぐらし（にんころ）』
 
-WWDC 25 で発表された **iPadOS 26**（iOS 26）対応モデルを一覧でチェック！さらに **Apple Intelligence** が使える iPad もまとめて紹介します。
+## はじめに
 
-## 目次
+今期はロボット、剣と魔法、忍びコメディとジャンルがバラけていて毎週が本当に楽しい！　この記事では **ガンダム初心者でも気軽に読めるネタバレ控えめのファンコラム** として、私が今まさに追いかけている 3 作品の魅力を "ライトに" まとめます。視聴のきっかけ探しや布教用のネタにどうぞ。
 
-1. [iPadOS 26 対応モデル一覧](#list)
-2. [Apple Intelligence が動く iPad](#ai)
-3. [iPadOS 26 の注目新機能](#features)
-4. [まとめ & 買い替えガイド](#summary)
+## 1. 機動戦士ガンダム ジークアクス
 
-## 1. iPadOS 26 対応モデル一覧
+**放送・配信**: 2025 年 4 月 8 日より毎週火曜 24:29〜 日テレ系30局 ／ 水曜未明から
 
-Apple 公式発表と主要メディア報道を基に、**iOS 26（iPadOS 26）にアップデート可能な iPad 全モデル**を整理しました。旧型の **iPad (第7世代／A10 チップ)** は今回でサポート終了となる点に注意してください。
+### あらすじ (さわり)
+女子高生アマテ・ユズリハは "ニャアン" との出会いを機に、闇の MS 決闘競技《クランバトル》へ参戦。謎の赤いガンダムと少年シュウジの出現が、彼女と世界を大きく揺さぶっていく――
 
-### 対応機種一覧表
+### 推しポイント
+- **サンライズ×カラー** のダブル体制。セルルック×3DCG の混在が旧作ファンにも刺さる。
+- モビルスーツ戦は **鉄血** ばりの重量感＋**水星** 由来のスピード感。第 6 話「キシリア暗殺計画」で一気に温度が上がります。
+- 主題歌は NOMELON NOLEMON の「HALO」。Pop なのにシリアスな歌詞がクセになる。
 
-**通常 iPad シリーズ**
-- iPad (第11世代) / A16 チップ ✔ iPadOS 26対応
-- iPad (第10世代) / A14 チップ ✔ iPadOS 26対応  
-- iPad (第9世代) / A13 チップ ✔ iPadOS 26対応
-- iPad (第8世代) / A12 チップ ✔ iPadOS 26対応
-- **iPad (第7世代) / A10 チップ ✗ サポート終了**
+**ひと言感想**: ビルド系の明るさと U.C. 系の政治劇が絶妙にブレンド。ガンダム未履修でも "主人公＝高校生女子" で入りやすい！
 
-**iPad Air シリーズ**
-- iPad Air 13″ (2025) / M3 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Air 11″ (2025) / M3 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Air 13″ (2024) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Air 11″ (2024) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Air (第5世代) / M1 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Air (第4世代) / A14 チップ ✔ iPadOS 26対応
-- iPad Air (第3世代) / A12 チップ ✔ iPadOS 26対応
+## 2. 片田舎のおっさん、剣聖になる
 
-**iPad mini シリーズ**  
-- iPad mini (第7世代) / A17 Pro チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad mini (第6世代) / A15 チップ ✔ iPadOS 26対応
-- iPad mini (第5世代) / A12 チップ ✔ iPadOS 26対応
+**放送**: 2025 年 4 月 5 日よりテレビ朝日系 "IMAnimation" 枠ほかで放送中
 
-**iPad Pro シリーズ**
-- iPad Pro 11″ (2024) / M4 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Pro 11″ (第4世代) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Pro 11″ (第3世代) / M1 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Pro 11″ (第2世代) / A12Z チップ ✔ iPadOS 26対応
-- iPad Pro 11″ (第1世代) / A12X チップ ✔ iPadOS 26対応
-- iPad Pro 13″ (2024) / M4 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Pro 12.9″ (第6世代) / M2 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Pro 12.9″ (第5世代) / M1 チップ ✔ iPadOS 26対応 + Apple Intelligence
-- iPad Pro 12.9″ (第4世代) / A12Z チップ ✔ iPadOS 26対応
-- iPad Pro 12.9″ (第3世代) / A12X チップ ✔ iPadOS 26対応
+### イントロダクション
+田舎で道場を営む中年剣士ベリル・ガーデナント。元弟子の推挙で王国の特別指南役に就き、都会で "遅咲き無双" を始めるハートウォーミング剣劇
 
-✔＝アップデート可能 / ―＝非対応
+### 推しポイント
+- 主人公が **"圧倒的実力者だけど社会的には無名"** というギャップ。『無職転生』を逆年齢にしたような爽快感。
+- ベリルと元弟子たちの **世代ギャップコメディ** が毎回ほっこり。
+- 作画は SILVER LINK. 系列の新スタジオ。10 話の乱戦で動きまくる剣戟は必見！
 
-## 2. Apple Intelligence が動く iPad
+**ひと言感想**: 若者主人公が多い異世界系の中、**"おっさん"** だからこその人生観が沁みる。疲れた週末に刺さる癒やし系バトル。
 
-**Apple Intelligence**（AI 生成アシスト、Contextual Siri など）は、**M1 / M2 / M3 / M4** または **A17 Pro** を搭載した iPad でのみ利用できます。現時点で日本語にも対応しているため、対象モデルなら追加設定なしで新しい AI 機能を試せます。
+## 3. 忍者と殺し屋のふたりぐらし（にんころ）
 
-### Apple Intelligence 対応機種
-- iPad Air (第5世代) 以降
-- iPad mini (第7世代)
-- iPad Pro 11″ (第3世代) 以降
-- iPad Pro 12.9″ (第5世代) 以降
+**放送**: 2025 年 4 月クール／TOKYO MX ほかで放送中（BS・配信も多数）
 
-**ポイント**：A14／A15 世代でも iPadOS 26 自体は動きますが、Apple Intelligence は**非対応**です。
+### イントロダクション
+くノ一・さとこが街で行き倒れていたところ、通りすがりの女子高生・このはに救われる。しかしこのはの正体はまさかの殺し屋！　こうして始まる "忍者×殺し屋" 危険すぎる同居生活コメディ。
 
-## 3. iPadOS 26 の注目新機能
+### 推しポイント
+- ギャグと**〝ガチ暗殺アクション〟**のテンポが絶妙で "シリアス過ぎない緊張感"。
+- 毎回 1 枚は用意される **変顔＆作画遊び** で Twitter の切り抜きがバズりがち。
+- エンディング曲は ClariS が手がけるレトロポップ。耳に残りすぎてループ再生確定。
 
-### Liquid Glass UI
-iPad 全体のウィンドウが「液体ガラス」風に透過。11″ 以上のモデルでは 120 Hz でアニメーションするため、ProMotion と相性抜群。
-
-### 新マルチウィンドウ & バックグラウンド
-Slide Over と Split View が統合され、ドラッグ 1 回で 4 ウィンドウ同時表示に。バックグラウンド処理も強化されて動画書き出し中に別アプリを操作しても速度が落ちません。
-
-### ローカル収録 & 高音質録音
-外部マイク選択・ノイズ分離に対応し、**AirPods Pro**接続時も 48 kHz/24bit で録音可能。ポッドキャスター必見！
-
-### 新アプリ: Journal & Apple Games
-
-**Journal**：写真・音声・筆跡を自動整理し"思い出アルバム"を生成
-
-**Apple Games**：クラウドとローカル双方のゲームを統合したハブ。M シリーズ iPad 限定で AAA タイトルのストリーミングも
-
-## 4. まとめ & 買い替えガイド
-
-今回の「**iOS 26 対応機種 iPad**」を一言でまとめると、**「A12 チップ以降はアップデート OK だが、AI 機能は M1/A17 Pro 世代以降のみ」** です。
-
-### 買い替え推奨パターン
-
-**iPad (第7世代) ユーザー**：最新 iPadOS が使えないため、最低でも第10世代 iPad へ乗り換え推奨
-
-**A12Z/A12X 搭載 iPad Pro**：Apple Intelligence を使いたいなら M1 以降の iPad Pro へ
-
-**A14/A15 世代 (mini6, Air4)**：アップデートは可能。AI が不要なら様子見もアリ
-
-### チェックリスト
-
-1. まず「設定 › 一般 › ソフトウェアアップデート」で iPadOS 26 ベータが表示されるか確認
-2. 表示されなければチップ世代を確認（A12 未満は非対応）
-3. Apple Intelligence を使うなら M1/A17 Pro 以上
-
-購入を検討中の方は、**「M シリーズ iPad」＋「最低 256 GB ストレージ」**を選ぶと iPadOS 26 の新機能を余すところなく試せます。迷ったら 2025 年モデルの **iPad Air 13″ (M3)** がバランス最強です。
-
----
-
-※ 本記事は 2025 年 6 月 10 日時点の情報です。正式リリース前のベータ内容は変わる可能性があります。最新情報は Apple 公式サイトをご確認ください。`,
-    date: new Date('2025-06-10'),
-    slug: 'ios-26-ipad-compatibility-guide',
-    category: '技術',
-    excerpt: 'WWDC 25で発表されたiPadOS 26対応機種を完全網羅！Apple Intelligence対応モデル、新機能、買い替えガイドまで詳しく解説します。'
-  },
-  'hayashihara-megumi-blog-controversy': {
-    id: '5',
-    title: '「林原めぐみブログ炎上」徹底解説｜発端・修正・余波を時系列で追う',
-    content: `# 「林原めぐみブログ炎上」徹底解説｜発端・修正・余波を時系列で追う
-
-国民的アニメキャラクターの声も数多く担当されている人気声優、林原めぐみさんのブログ投稿が、先日インターネット上で大きな波紋を呼び、「炎上」という言葉と共に語られています。彼女のファンとして、またこの出来事に関心を持つ一人として、一体何が起こったのか、その経緯と影響を時系列で追って解説します。
-
-## 発端となったブログ投稿
-
-事の発端は、林原めぐみさんが**「興味がない、わからない、知らない」**というタイトルでブログを投稿したことでした。ブログは「で いいんだろうか 本当に心配になって来ました」という言葉で始まります。
-
-投稿の初期バージョンでは、林原さんは「楽しい旅行もさせてもらった おとなり韓国での事」として、**韓国の政治系YouTuber**に言及していました。そのYouTuberの動画には、「韓国のテレビと日本のテレビも放送しない内容」が含まれていたと述べています。さらに、「今、日本でも起きている 怖い事に繋がる まさかの報道規制」や「実際『陰謀論』とも言われている」ことにも触れ、「気になる人は探って見て下さい」「『自分の目』で判断してください」と読者に呼びかけていました。
-
-## 修正とその理由
-
-しかし、このYouTuberへの言及や報道規制、陰謀論に関する記述は、後にブログから削除・修正されています。
-
-修正された文章によると、この変更は**「韓国の友人から連絡」**を受けたためだといいます。友人は、現在の韓国国内では右派と左派の対立があり、林原さんの発言がどちらかを支持しているように受け取られかねず、「いらぬ争いに火をつける事になる」と指摘したそうです。林原さんは、「部外者」である自身が安易に話題に取り上げることで「悲しむ人がいるとゆー事実」を知り、既に傷ついた人への謝罪や、これ以上傷つく人を増やさないために一部を割愛したと述べています。
-
-修正後の投稿でも、林原さんが「とにかく悲しいと伝えたかった」のは、**「声を上げる事すら冷ややかに 日本が日本に［無関心］な事」**であると強調されています。
-
-## ブログの主な内容と問題提起
-
-修正後のブログでも、林原さんは日本の現状に対するいくつかの懸念を表明しています。
-
-### 食料問題への疑問
-食料問題として**「米が無い？？？？ 日本に？？？」**と疑問を呈しています。
-
-### 教育支援制度の格差
-一部の海外留学生には「無償で補助」がある一方で、日本の学生への奨学金が「返さないといけないから 平たく言うと借金」であるという「曲がった真実」に言及しています。これは外国人留学生への給付型奨学金などと、日本人学生への貸与型奨学金との違いを指していると考えられます。
-
-### 日本らしさの危機
-日本の「無関心」が続けば、**「日本の日本らしさ」**である「マナーも、態度も、技術も」、そして「表現の自由としてのアニメも」失われるかもしれないという危機感を示しています。
-
-### マナー問題への指摘
-一部の「マナーの無い民泊の人」や「『譲る』を知らない海外観光客」、「京都の竹削ってしまったりする人もいる」といった事例に触れ、規制や取り締まりの必要性を訴えています。これは**「日本ザリガニが あっという間に外来種に喰われちゃったみたいに なってしまう」**という比喩を用いて、日本の「並んで買う」といった暗黙のルールが失われる可能性への懸念として語られています。
-
-### 税金の使い道について
-日本の税金は「まずは」「税金を納めた人達へ（納めた在日外国人は勿論含む）」、「日本の［被災地］に」、「今日本を支えている学生」に使って欲しいという考えを示し、これが**「排外主義と言われるのかしら」**と問いかけています。日本国内が疲弊すれば「［おもてなし］もできなくなる」とも述べています。
-
-「裏金の方が酷いし問題」であると認識していることも記されており、「とにかく、選挙権がある人は（18歳からね） 今一度、その権利を考えて欲しいと言いたかった」と、政治への関心と選挙への参加を強く訴えています。自身でも「やはり政治的な発言は、難しい」と感じているようです。
-
-## 波紋と様々な反応（余波）
-
-このブログ投稿はX（旧Twitter）で**「林原めぐみさん」がトレンド入り**するなど、大きな話題となりました。
-
-寄せられた反応は様々で、賛否両論となっています。
-
-### 批判的な意見
-- 外国人を「外来種」に例えたことへの強い反発
-- 「排外主義（ゼノフォビア）」ではないかという指摘
-- 外国人に関する記述に焦点が当たりすぎているという批判
-- 「外来種」の比喩が歴史的に差別や排除に使われてきた背景への警鐘
-- 外国人学生への援助が米不足に影響しているという主張への疑問
-- 「オールドジャパニーズピープルがレイシストなのはニュースではない」といった意見
-
-### 支持的な意見
-実業家の**三崎優太氏**は、「『不良外国人をちゃんと取り締まれ』、『日本人から集めた税金は優先して日本の為に使ってほしい』って当たり前のことでしょ。炎上する意味がわからない」と支持を表明しました。
-
-他のユーザーからも以下のような声が寄せられています：
-- 「至極真っ当なこと」「炎上する理由が分からない」
-- 「勇気ある発信」
-- 「排外主義とか言われてるけど別に間違ったこと言ってない」
-- 「日本人ファーストにしないと日本はヤバい」
-- 「有名人だから黙ってろ」と言う人々こそ差別的ではないかという反論
-- 外国人によるマナー違反や法執行の甘さを問題視する声
+**ひと言感想**: 10 分枠感覚で見られる軽さ＆百合み強めの掛け合い。深夜の "口角上げアニメ" 枠にどうぞ。
 
 ## まとめ
 
-林原めぐみさんのブログ投稿は、日本の現状、特に政治や社会への無関心に対する強い危機感から、**「選挙に行くこと」の重要性を訴えること**が最も伝えたかったメッセージでした。
+- **重厚なロボアクション** を味わいたい → ジークアクス
+- **中年主人公×剣と魔法×人情** に浸りたい → 片田舎のおっさん
+- **さらっと笑って寝落ち** したい → にんころ
 
-その中で、外国人に関する記述を含む具体的な問題提起が大きな波紋を呼びましたが、そこには日本人学生への支援や社会のマナーといった、彼女なりの問題意識があったことがうかがえます。
-
-政治的な発言の難しさを自身でも感じながらも発信されたこのブログは、日本の抱える様々な課題や、外国人との共生について、多くの人々に議論を促すきっかけとなったと言えるでしょう。`,
-    date: new Date('2025-06-09'),
-    slug: 'hayashihara-megumi-blog-controversy',
-    category: 'エンタメ',
-    excerpt: '人気声優・林原めぐみさんのブログ投稿が炎上した一連の経緯を時系列で詳しく解説。発端となった投稿内容、修正の理由、そして様々な反応まで包括的に分析します。'
+どれも 1 話視聴無料の配信先があるので、気になったら公式サイトからチェックしてみてください。来週も感想を追記予定。コメントで "あなたの推しポイント" も教えてもらえると嬉しいです！
+    `
   }
+]
+
+// カテゴリ別の色設定
+const categoryColors: { [key: string]: string } = {
+  'テスト': 'bg-blue-100 text-blue-800',
+  '映画': 'bg-purple-100 text-purple-800',
+  '技術': 'bg-green-100 text-green-800',
+  'エンタメ': 'bg-pink-100 text-pink-800',
+  'アニメ': 'bg-orange-100 text-orange-800',
+  'ゲーム': 'bg-red-100 text-red-800',
+  'お知らせ': 'bg-indigo-100 text-indigo-800',
+  'default': 'bg-gray-100 text-gray-800'
 }
 
 interface Props {
@@ -578,121 +727,215 @@ interface Props {
   }
 }
 
-export async function generateMetadata({ params }: Props) {
-  const post = posts[params.slug as keyof typeof posts]
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const post = availablePosts.find(p => p.slug === params.slug)
   
   if (!post) {
     return {
-      title: 'Not Found'
+      title: 'ページが見つかりません',
     }
   }
 
   return {
     title: post.title,
-    description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      type: 'article',
-      publishedTime: post.date.toISOString(),
-    },
+    description: `${post.title} - ${post.category}カテゴリの記事`,
   }
 }
 
+export function generateStaticParams() {
+  return availablePosts.map((post) => ({
+    slug: post.slug,
+  }))
+}
+
 export default function PostPage({ params }: Props) {
-  const post = posts[params.slug as keyof typeof posts]
+  const post = availablePosts.find(p => p.slug === params.slug)
 
   if (!post) {
     notFound()
   }
 
-  const currentUrl = `https://yourdomain.com/posts/${post.slug}`
+  // 改良されたマークダウン解析関数
+  const parseMarkdown = (content: string) => {
+    const lines = content.trim().split('\n')
+    const elements: React.ReactNode[] = []
+    let currentIndex = 0
+
+    const processText = (text: string) => {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.*?)\*/g, '<em>$1</em>')
+        .replace(/`([^`]+)`/g, '<code class="bg-gray-800 text-green-400 px-2 py-1 rounded text-sm font-mono">$1</code>')
+    }
+
+    while (currentIndex < lines.length) {
+      const line = lines[currentIndex].trim()
+      
+      // 空行をスキップ
+      if (!line) {
+        currentIndex++
+        continue
+      }
+
+      // H2見出し
+      if (line.startsWith('## ')) {
+        elements.push(
+          <h2 key={currentIndex} className="text-2xl font-semibold mb-4 mt-8 text-gray-800 border-b border-gray-200 pb-2">
+            {line.replace('## ', '')}
+          </h2>
+        )
+        currentIndex++
+        continue
+      }
+
+      // H3見出し
+      if (line.startsWith('### ')) {
+        elements.push(
+          <h3 key={currentIndex} className="text-xl font-semibold mb-3 mt-6 text-gray-700">
+            {line.replace('### ', '')}
+          </h3>
+        )
+        currentIndex++
+        continue
+      }
+
+      // コードブロック
+      if (line.startsWith('```')) {
+        const language = line.replace('```', '') || 'text'
+        const codeLines: string[] = []
+        currentIndex++
+        
+        while (currentIndex < lines.length && !lines[currentIndex].trim().startsWith('```')) {
+          codeLines.push(lines[currentIndex])
+          currentIndex++
+        }
+        
+        elements.push(
+          <div key={currentIndex} className="my-6">
+            <pre className="bg-gray-900 text-green-400 p-4 rounded-lg overflow-x-auto">
+              <code className="text-sm text-green-400 font-mono">{codeLines.join('\n')}</code>
+            </pre>
+          </div>
+        )
+        currentIndex++ // ```の行をスキップ
+        continue
+      }
+
+      // リスト項目
+      if (line.startsWith('- ')) {
+        const listItems: string[] = []
+        
+        while (currentIndex < lines.length && lines[currentIndex].trim().startsWith('- ')) {
+          listItems.push(lines[currentIndex].trim().replace('- ', ''))
+          currentIndex++
+        }
+        
+        elements.push(
+          <ul key={currentIndex} className="list-disc list-inside space-y-2 text-gray-700 mb-6">
+            {listItems.map((item, itemIndex) => (
+              <li key={itemIndex} dangerouslySetInnerHTML={{ __html: processText(item) }} />
+            ))}
+          </ul>
+        )
+        continue
+      }
+
+      // 通常の段落
+      const paragraphLines: string[] = []
+      
+      while (currentIndex < lines.length && 
+             !lines[currentIndex].trim().startsWith('#') && 
+             !lines[currentIndex].trim().startsWith('```') && 
+             !lines[currentIndex].trim().startsWith('- ') &&
+             lines[currentIndex].trim() !== '') {
+        paragraphLines.push(lines[currentIndex].trim())
+        currentIndex++
+      }
+      
+      if (paragraphLines.length > 0) {
+        const paragraphText = paragraphLines.join(' ')
+        elements.push(
+          <p key={currentIndex} className="text-gray-700 leading-relaxed mb-6" 
+             dangerouslySetInnerHTML={{ __html: processText(paragraphText) }}
+          />
+        )
+      }
+    }
+
+    return elements
+  }
 
   return (
-    <div className="max-w-4xl mx-auto px-8 py-16">
-      <article>
-        {/* ヘッダー */}
-        <header className="mb-16 text-center">
-          <div className="flex items-center justify-center space-x-3 mb-6">
-            <span className="text-xs text-gray-500 tracking-wider">
+    <div className="max-w-4xl mx-auto px-4 py-8">
+      {/* 記事ヘッダー */}
+      <header className="mb-8">
+        <div className="mb-4">
+          <Link 
+            href="/posts"
+            className="text-blue-600 hover:text-blue-800 text-sm font-medium border-b border-blue-300 hover:border-blue-600 transition-colors"
+          >
+            ← 記事一覧に戻る
+          </Link>
+        </div>
+        
+        <div className="relative h-64 md:h-80 bg-gray-100 rounded-lg overflow-hidden mb-6">
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            className="object-cover"
+          />
+        </div>
+
+        <div className="space-y-4">
+          <div className="flex items-center justify-between">
+            <span className={`px-3 py-1 rounded-full text-sm font-medium ${categoryColors[post.category] || categoryColors.default}`}>
               {post.category}
             </span>
-            <span className="text-xs text-gray-300">•</span>
-            <time className="text-xs text-gray-500 tracking-wider">
-              {format(post.date, 'yyyy/MM/dd')}
+            <time className="text-gray-500 text-sm">
+              {format(post.date, 'yyyy年MM月dd日', { locale: ja })}
             </time>
           </div>
           
-          <h1 className="text-2xl font-light text-gray-900 leading-relaxed tracking-wide">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight">
             {post.title}
           </h1>
-        </header>
-
-        {/* メイン画像 */}
-        {post.slug === 'hayashihara-megumi-blog-controversy' && (
-          <div className="relative w-full h-64 md:h-80 mb-16 overflow-hidden rounded-lg">
-            <Image
-              src="/hayashihara-megumi-blog.png"
-              alt={post.title}
-              fill
-              className="object-cover"
-            />
-          </div>
-        )}
-        
-        {post.slug === 'ios-26-ipad-compatibility-guide' && (
-          <div className="relative w-full h-64 md:h-80 mb-16 overflow-hidden rounded-lg">
-            <Image
-              src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=1200&h=600&fit=crop&auto=format&q=80"
-              alt="iPad Pro with Apple Pencil - iOS 26 iPadOS compatibility"
-              fill
-              className="object-cover"
-            />
-          </div>
-        )}
-
-        {/* AdSense広告 */}
-        <AdUnit slot="1111111111" />
-
-        {/* 記事コンテンツ */}
-        <div className="prose prose-lg max-w-none">
-          <div className="text-sm text-gray-700 leading-loose tracking-wide">
-            {post.content.split('\n').map((line, index) => {
-              if (line.startsWith('# ')) {
-                return <h1 key={index} className="text-xl font-light text-gray-900 mb-8 mt-12 tracking-wide">{line.substring(2)}</h1>
-              } else if (line.startsWith('## ')) {
-                return <h2 key={index} className="text-lg font-light text-gray-900 mb-6 mt-10 tracking-wide">{line.substring(3)}</h2>
-              } else if (line.startsWith('### ')) {
-                return <h3 key={index} className="text-base font-light text-gray-900 mb-4 mt-8 tracking-wide">{line.substring(4)}</h3>
-              } else if (line.startsWith('- ')) {
-                return <li key={index} className="text-sm text-gray-700 mb-2 ml-4">{line.substring(2)}</li>
-              } else if (line.match(/^\d+\./)) {
-                return <li key={index} className="text-sm text-gray-700 mb-2 ml-4">{line.substring(line.indexOf('.') + 2)}</li>
-              } else if (line.trim() === '') {
-                return <div key={index} className="mb-6"></div>
-              } else {
-                return <p key={index} className="text-sm text-gray-700 leading-loose mb-6">{line}</p>
-              }
-            })}
+          
+          <div className="flex flex-wrap gap-2">
+            {post.tags.map((tag, index) => (
+              <span key={index} className="px-2 py-1 bg-gray-100 text-gray-600 text-sm rounded">
+                #{tag}
+              </span>
+            ))}
           </div>
         </div>
+      </header>
 
-        {/* AdSense広告 */}
-        <AdUnit slot="2222222222" />
-
-        {/* SNSシェアボタン */}
-        <ShareButtons 
-          url={currentUrl}
-          title={post.title}
-          description={post.excerpt}
-        />
+      {/* 記事コンテンツ */}
+      <article className="prose prose-lg max-w-none">
+        <div className="space-y-2">
+          {parseMarkdown(post.content)}
+        </div>
       </article>
+
+      {/* フッター */}
+      <footer className="mt-16 pt-8 border-t border-gray-200">
+        <div className="flex items-center justify-between">
+          <Link 
+            href="/posts"
+            className="text-blue-600 hover:text-blue-800 text-sm font-medium border-b border-blue-300 hover:border-blue-600 transition-colors"
+          >
+            ← 記事一覧に戻る
+          </Link>
+          
+          <Link 
+            href="/"
+            className="text-gray-600 hover:text-gray-800 text-sm font-medium border-b border-gray-300 hover:border-gray-600 transition-colors"
+          >
+            ホームに戻る →
+          </Link>
+        </div>
+      </footer>
     </div>
   )
-}
-
-export async function generateStaticParams() {
-  return Object.keys(posts).map((slug) => ({
-    slug,
-  }))
 } 
