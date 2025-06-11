@@ -31,26 +31,7 @@ const allPosts = [
     image: '/hero-image.png',
     tags: ['ブログ', '開始', 'Next.js', '技術']
   },
-  {
-    id: '1',
-    title: 'Test Post - New Feature Check',
-    excerpt: 'ブログ投稿システムのテスト用記事です。新しい投稿作成機能の動作確認を行います。',
-    date: new Date('2025-06-11'),
-    slug: 'test-post-new-feature-check',
-    category: 'テスト',
-    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&h=400&fit=crop&auto=format&q=80',
-    tags: ['テスト', '機能確認', 'ブログ']
-  },
-  {
-    id: '2',
-    title: 'Movie Review - Spider-Man Into the Spider-Verse',
-    excerpt: 'スパイダーバースの映画レビュー記事です。革新的なアニメーション技術と感動的なストーリーについて詳しく解説します。',
-    date: new Date('2025-06-11'),
-    slug: 'movie-review-spider-man-into-the-spider-verse',
-    category: '映画',
-    image: 'https://images.unsplash.com/photo-1489599904828-9c2c3e5e5b7f?w=800&h=400&fit=crop&auto=format&q=80',
-    tags: ['映画', 'レビュー', 'アニメーション']
-  },
+
   {
     id: '3',
     title: '【2025年最新版】iOS 26 対応機種 iPad 完全ガイド',
@@ -95,8 +76,6 @@ const allPosts = [
 
 // カテゴリ別の色設定
 const categoryColors: { [key: string]: string } = {
-  'テスト': 'bg-blue-100 text-blue-800',
-  '映画': 'bg-purple-100 text-purple-800',
   '技術': 'bg-green-100 text-green-800',
   'エンタメ': 'bg-pink-100 text-pink-800',
   'アニメ': 'bg-orange-100 text-orange-800',
