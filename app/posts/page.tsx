@@ -79,7 +79,7 @@ const allPosts = [
     date: new Date('2025-06-13'),
     slug: 'gundam-seed-axios-episode-10-review',
     category: 'アニメ',
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=400&fit=crop&auto=format&q=80',
+    image: '/00115-3618800821.png',
     tags: ['ガンダム', 'アニメ', 'レビュー', 'ジークアクス', '感想']
   },
 
