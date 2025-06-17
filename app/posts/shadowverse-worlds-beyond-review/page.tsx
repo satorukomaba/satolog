@@ -1,11 +1,11 @@
 import { Metadata } from 'next'
-import metadata from './metadata.json'
+import postMetadata from './metadata.json'
 
 export const dynamic = 'force-static'
 
 export const metadata: Metadata = {
-  title: metadata.title,
-  description: metadata.description,
+  title: postMetadata.title,
+  description: postMetadata.description,
 }
 
 const content = `
