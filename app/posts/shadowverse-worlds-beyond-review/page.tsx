@@ -11,6 +11,8 @@ export const metadata: Metadata = {
 const content = `
 # 【シャドバビヨンド】新カード＆超進化システム徹底解説
 
+![Shadowverse Worlds Beyond メインビジュアル](/shadowverse-worlds-beyond-1.jpg)
+
 ## — 初日環境はこう動く！—
 
 ### 1. リリース概要
@@ -21,6 +23,8 @@ const content = `
 
 **対応**：iOS / Android / Steam / Epic Games Store
 
+![キャラクター紹介](/shadowverse-worlds-beyond-2.jpg)
+
 ### 2. まず覚えたい "2大新システム"
 
 | システム | 概要 | キモ |
@@ -29,6 +33,8 @@ const content = `
 | エクストラ PP | 後攻のみ発動可。5Tまでに1回、6T以降にもう1回、残りPP＋1（計2回） | "後手1テンポ遅れ"を補う切り札 |
 
 ### 3. 新クラス ナイトメア 速攻プレビュー
+
+![対戦画面](/shadowverse-worlds-beyond-3.jpg)
 
 **色**：ネクロ＋ヴァンプのハイブリッド
 
@@ -76,6 +82,8 @@ const content = `
 - 制御不能なバーストダメージを先に叩き込んだ方が勝つメタ
 
 ### 7. まとめ
+
+![集合イラスト](/shadowverse-worlds-beyond-4.jpg)
 
 超進化で"全フォロワーがポテンシャル持ち"に進化し、対戦はよりローグライクな一発逆転ゲームへ。
 カードプールがまだ浅い今こそ、新規も復帰勢も同じスタートライン。
